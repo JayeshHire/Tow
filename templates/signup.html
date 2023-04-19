@@ -4,10 +4,16 @@
 {% block title %} Sign up page{% endblock %} 
 {% block head %} {{ super}} {% endblock %} 
 <body>
-    <button onclick="window.location.href = 'signup/';" class="element" >Login</button>
-    <button onclick="window.location.href = 'option/';" class="element">Signin</button>
+
 <form action="created-profile/" method="post">
-    {{form.as_p}}
+    
+    {%for field in form %} 
+        <div class="field-wrapper">
+            {{field.errors}}
+            {{field.label_tag}}
+            {{field}}
+        </div>
+        {%endfor%}
     <input type="submit" value="Submit">
 </form>
 </body>
