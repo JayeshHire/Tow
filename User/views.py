@@ -4,7 +4,7 @@ from django.http import StreamingHttpResponse
 from . import forms
 from rest_framework.parsers import JSONParser
 from django.contrib.auth import models , authenticate
-from serializers import MessageSerializer
+from . import serializers
 # Create your views here.
 
 def SignUpView(request):
@@ -18,10 +18,12 @@ def SignUpView(request):
         form = forms.UserSignup()
         return render(request , 'signup.html' ,{'form':form})
     
+def home(request):
+    return render(request,'home.html')
 
 def checkMessage(request):
     data = JSONParser().parser(request)
-    serializer = MessageSerializer(data = data)
+    serializer = serializers.MessageSerializer(data = data)
     if serializer.data['signInMethod'] == 'EmailSignin' :
         pass
     pass
@@ -44,7 +46,7 @@ def Login(request):
             else:
                 #user authentication is not successful
                 #Give some message to the user regarding the wrong password
-                
+
                 pass
             
 

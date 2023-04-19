@@ -1,6 +1,8 @@
 {% extends "index.html" %} 
+{%load static %}
+
 {% block title %} Sign up page{% endblock %} 
-{% block head %} {{ super()}} {% endblock %} 
+{% block head %} {{ super}} {% endblock %} 
 {% block body %} 
 <button onclick="window.location.href = 'signup/';" class="element" >Login</button>
     <button onclick="window.location.href = 'option/';" class="element">Signin</button>
