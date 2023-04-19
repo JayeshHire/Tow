@@ -7,19 +7,28 @@
 <button onclick="EmailSignin()">Signin Using Email</button>
 <button onclick="UsernameSignin()">Signin Using Username</button>
 <div id="email-signin" style="display: none;">
-    <form action="profile/" method="post">
-        {{signinEmail}}
+    <form action="user/option/" method="post">
+        {{emailform}}
         <input type="submit" value="Submit">
     </form>
 </div>
 <div id="username-signin" style="display: none;">
-    <form action="profile/" method="post">
-        {{signinUsername}}
+    <form action="user/option/" method="post">
+        {{usernameform}}
         <input type="submit" value="Submit">
     </form>
   </div>
 
 <script>
+  var signInMethod = "method";
+  function sendJSON (){
+    let xhr = new XMLHttpRequest();
+    let url = "message";
+    xhr.open("POST",url , true);
+    xhr.setRequestHeader("Content-Type","application/json");
+    var data = JSON.stringify({"signInMethod": signInMethod});
+    xhr.send(data);
+  }
   function EmailSignin() {
     // Get the content element
     var content = document.getElementById("email-signin");
@@ -27,6 +36,9 @@
     // Set its display property to "block"
     content.style.display = "grid";
     content.style.justifyContent = "space-around";
+    signInMethod = "EmailSignin" ;
+    sendJSON();
+
   }
   function UsernameSignin() {
     // Get the content element
@@ -35,6 +47,8 @@
     // Set its display property to "block"
     content.style.display = "grid";
     content.style.justifyContent = "space-around";
+    signInMethod = "UsernameSignin";
+    sendJSON();
   }
 </script>
 
