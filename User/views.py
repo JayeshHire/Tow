@@ -50,3 +50,8 @@ def Login(request):
                 pass
             
 
+def test(request):
+    form = forms.UserSignup()
+    passform = forms.Pass()
+    return render(request, 'test.html',{'f':form,'p':passform})     
+

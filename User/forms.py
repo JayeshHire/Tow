@@ -3,10 +3,14 @@ from django import forms
 from django.contrib.auth import models
 
 class UserSignup(ModelForm):
+    password = forms.PasswordInput()
     class Meta:
         model = models.User
-        fields = ['username','first_name','last_name','email','password']
+        fields = ['username','first_name','last_name','email']
     
+class Pass(forms.Form):
+    password = forms.PasswordInput()
+
 class UserSigninUsername(forms.Form):
     
     username = forms.CharField()
