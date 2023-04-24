@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('',views.home),
+    
     path('user/',include('User.urls')),
    # path('message/',views.checkMessage),
     path('admin/', admin.site.urls),

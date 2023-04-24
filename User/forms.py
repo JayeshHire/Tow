@@ -8,8 +8,7 @@ class UserSignup(ModelForm):
         model = models.User
         fields = ['username','first_name','last_name','email']
     
-class Pass(forms.Form):
-    password = forms.PasswordInput()
+
 
 class UserSigninUsername(forms.Form):
     

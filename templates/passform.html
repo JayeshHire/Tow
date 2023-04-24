@@ -1,0 +1,38 @@
+{%extends "index.html" %} 
+{%load static %} 
+{% block head%} 
+{% block title %}
+password login form 
+{%endblock%} 
+<link rel="stylesheet" type="text/css" href="{%static 'admin/css/forms.css'%}"> 
+{%endblock%} 
+{%block content %} 
+<form action="submission/" method="POST">
+    {%csrf_token%}
+    <input type="password" name="pass" id="p1">
+    <input type="password" name="confirmpass" id="p2">
+    <input type="button" onclick="check()" name="checkpass" placeholder="confirm">
+    <p id="error"></p>
+    <script>
+        const p2 = document.querySelector('#sub');
+        p2.style.display = "none";
+        function check(){
+        let val1 = document.getElementById('p1').value;
+        let val2 = document.getElementById('p2').value;
+        const t1 = document.getElementById('sub');
+        if (val1 === val2){
+            document.getElementById('error').innerHTML ="checked the password";
+            t1.style.display = "block";
+        } else {
+            document.getElementById("error").innerHTML = "passwords are not matching";
+            document.getElementById('p1').value = "";
+            document.getElementById('p2').value = "";
+            t1.style.display = "none";
+        }
+    }
+    </script>
+    <p id="sub">
+        <input type="submit" value="Submit">
+    </p>
+</form>
+{%endblock%}

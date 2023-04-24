@@ -1,4 +1,4 @@
-from django.shortcuts import render , HttpResponse
+from django.shortcuts import render , HttpResponse , redirect
 from django.core.exceptions import BadRequest
 from django.http import StreamingHttpResponse
 from . import forms
@@ -52,6 +52,11 @@ def Login(request):
 
 def test(request):
     form = forms.UserSignup()
-    passform = forms.Pass()
-    return render(request, 'test.html',{'f':form,'p':passform})     
+    
+    return render(request, 'test.html',{'f':form}   )     
 
+def passInputform(request):
+    return render(request,"passform.html")
+
+def submission(request):
+    return redirect("/")

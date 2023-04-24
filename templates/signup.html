@@ -1,21 +1,25 @@
 {% extends "index.html" %} 
 {%load static %}
 
-{% block title %} Sign up page{% endblock %} 
-{% block head %} {{ super}} {% endblock %} 
-<body>
 
-<form action="created-profile/" method="post">
-    
+{% block head %} {{ super }}
+{% block title %} Sign up page{% endblock %}  
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css'%}">
+{% endblock %} 
+{% block content %}
+
+<form action="passVerification/" method="post">
+    {%csrf_token%}
     {%for field in form %} 
-        <div class="field-wrapper">
-            {{field.errors}}
-            {{field.label_tag}}
-            {{field}}
-        </div>
-        {%endfor%}
+    
+    <div class="form-row" >
+        {{ field.errors }}
+
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %} 
     <input type="submit" value="Submit">
 </form>
-</body>
+{%endblock%}
 
 
